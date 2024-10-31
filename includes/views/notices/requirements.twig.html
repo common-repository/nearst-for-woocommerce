@@ -1,0 +1,11 @@
+<div id="message" class="error">
+	<p>
+		<strong>
+			NearSt for Woocommerce is missing requirements.
+			Please make sure all requirements are available.
+		</strong>
+	</p>
+	{% for req in requirements %}
+		<p>&bull; {{ req }}</p>
+	{% endfor %}
+</div>

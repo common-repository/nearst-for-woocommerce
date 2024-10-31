@@ -1,0 +1,61 @@
+<link href="{{ stylesUrl }}" rel="stylesheet"/>
+
+<div class="wrap options-page wp-nearst">
+	<header>
+		<div>
+			<h1>NearSt</h1>
+		</div>
+		<nav>
+			<a href="https://myshop.near.st" target="_blank">MyShop</a>
+			<a href="https://shopkeeper-support.near.st" target="_blank">Support</a>
+		</nav>
+	</header>
+
+	<div class="wp-nearst-center">
+		<main>
+			<section class="centered">
+				<h1>Connect your stock</h1>
+				<p>Connect your WooCommerce stock to NearSt to get more customers into your shop.</p>
+			</section>
+			<section style="text-align: center;" id="nearst-wp-step-1">
+				<p>Do you already have a NearSt account?</p>
+				<button class="primary" id="nearst-next-step">Yes, I do</button>
+				<button onclick="window.open('https://setup.near.st/?connector=woocommerce')">No, I don't</button>
+			</section>
+			<div id="nearst-wp-step-2" style="display: none;">
+				<form method="post">
+					<section style="text-align: center;">
+						<p>Find your NearSt <strong>Upload Key</strong> and enter it here.</p>
+						<input type="text" pattern="[\w\d]{32}" required id="nearst-upload-key" name="upload_key"/>
+						<button class="primary" type="submit">Finish setup</button>
+						<details style="margin-top: 10px;">
+							<summary>Advanced options</summary>
+							<label
+								for="upload_type"
+								style="display: block; margin-top: 16px; margin-bottom: 4px; font-weight: bold;"">
+								Upload type
+							</label>
+							<select id="upload_type" name="upload_type">
+								<option value="stock_products">Upload products and inventory</option>
+								<option value="products">Upload products only</option>
+								<option value="stock">Upload stock only</option>
+							</select>
+							<label
+								for="product_identifier"
+								style="display: block; margin-top: 16px; margin-bottom: 4px; font-weight: bold;"">
+								Product identifier
+							</label>
+							<select id="product_identifier" name="product_identifier">
+								<option value="auto">Automatic</option>
+								<option value="sku">Product SKU</option>
+								<option value="id">Woocommerce Product ID</option>
+							</select>
+						</details>
+					</section>
+				</form>
+			</div>
+		</main>
+	</div>
+</div>
+
+<script src="{{ scriptsUrl }}"></script>

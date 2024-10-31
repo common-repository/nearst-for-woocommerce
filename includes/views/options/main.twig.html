@@ -1,0 +1,79 @@
+<link href="{{ stylesUrl }}" rel="stylesheet"/>
+
+<div class="wrap options-page wp-nearst">
+	<header>
+		<div>
+			<h1>NearSt</h1>
+		</div>
+		<nav style="flex-shrink: 0;">
+			<a href="https://myshop.near.st/?utm_source=nearst-for-woocommerce" target="_blank">MyShop</a>
+			<a href="https://shopkeeper-support.near.st/?utm_source=nearst-for-woocommerce" target="_blank">Support</a>
+		</nav>
+	</header>
+
+	<div class="wp-nearst-container">
+		<main>
+			<section>
+				<h2 style="color: #50b83c; margin-bottom: 0;">Connected to NearSt</h2>
+			</section>
+			<section>
+				<h2>Upload schedule</h2>
+				<p style="line-height: 1.7;">
+					Changes are synchronized every 15 minutes<br/>
+					Last uploaded: {% if lastUpload %}{{ lastUpload.date }}{% else %}never{% endif %}<br />
+					<a href="?page=nearst&nearst_reset=1" style="text-decoration: none;">Enter new upload key &rarr;</a>
+				</p>
+				<button
+					onclick="location.href='?page=nearst&nearst_upload=1';"
+					style="margin-left: 0; margin-top: 10px; margin-bottom: 0;">
+					Upload now
+				</button>
+			</section>
+			{% if lastUpload %}
+				<section>
+					<h2>Inventory status</h2>
+					<p style="line-height: 1.7;">
+						{{ lastUpload.inventory.accepted }} uploaded products
+						({{ lastUpload.inventory.in_stock }} in stock)
+					</p>
+					<p style="margin-top: 12px; opacity: 0.6; line-height: 1.7;">
+						{{ lastUpload.inventory.tracked }}/{{ lastUpload.inventory.total }}
+						products have tracked inventory<br/>
+						{{ lastUpload.inventory.sku }}/{{ lastUpload.inventory.total }} products have a SKU set
+					</p>
+				</section>
+			{% endif %}
+		</main>
+		<div>
+			{% if memoryIssue %}
+				<div id="message" class="error">
+					<p>
+						<strong>
+							Warning
+						</strong>
+					</p>
+					<p>We might not be able to process all of your memory, due to the PHP <code>memory_limit</code>
+						being set to a low value. We recommend setting this to at least <code>512M</code> to allow for
+						sufficient memory to process all your products.</p>
+				</div>
+			{% endif %}
+			<h2>How uploading to NearSt works</h2>
+			<p>
+				Now that your NearSt account is connected, we'll automatically upload your inventory changes every 15
+				minutes.<br/><br/>&nbsp;
+			</p>
+			<h2>Making sure products show up on Google</h2>
+			<p>
+				<strong>Enable stock management</strong><br/>
+				We'll only show products on Google that have a quantity set in WooCommerce. To do that, go into a
+				product details page and check the box next to 'Manage stock' in the Inventory tab.
+			</p>
+			<p>
+				<strong>Set a SKU</strong><br/>
+				Products will show up in Google when a GTIN barcode is set in the SKU field.<br/>&nbsp;
+			</p>
+		</div>
+	</div>
+</div>
+
+<script src="{{ scriptsUrl }}"></script>
